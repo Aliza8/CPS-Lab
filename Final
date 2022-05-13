@@ -1,0 +1,88 @@
+package com.company;
+import java.util.*;
+public class Employee {
+
+    private String name;
+    private static int ID = 0;
+    private String Qualification;
+    private ArrayList <String> Skills;
+
+
+    int GenerateID(){
+        ID++;
+        return ID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String a) {
+        name = a;
+    }
+
+    public void setQualification(String a) {
+        Qualification = a;
+    }
+
+    public String getQualification() {
+        return Qualification;
+    }
+
+    public ArrayList<String> getSkills() {
+        return Skills;
+    }
+
+    public void setSkills(ArrayList<String> a) {
+        Skills = a;
+    }
+
+    public Employee(){
+        System.out.println("\nI will initialize all the values by null.");
+    }
+
+    public Employee(String a, String b, ArrayList<String> c){
+        name = a;
+        Qualification = b;
+        Skills = c;
+    }
+    void display(){
+        System.out.println("\nYou are Selected.");
+        System.out.println("Name = " + name);
+        System.out.println("ID = " + GenerateID());
+        System.out.println("Qualification = " + Qualification);
+        System.out.println("Skills = " + Skills);
+    }
+
+    void skillsCheck(){
+        System.out.println("Finding desired candidate for the React Team.");
+    }
+}
+
+class MonthlySalariedEmployee extends Employee{
+
+    int BasicPay;
+    int Allowances;
+
+    MonthlySalariedEmployee(){
+        BasicPay = 0;
+        Allowances = 0;
+    }
+    MonthlySalariedEmployee(String a, String b, ArrayList<String> c, int d, int e){
+        super(a, b, c);
+        BasicPay = d;
+        Allowances = e;
+    }
+
+    @Override
+    void skillsCheck() {
+        for (int i=0; i<3; i++){
+            if (getSkills().get(i) == "React"){
+                BasicPay += 500;
+                display();
+                System.out.println("Salary = " + BasicPay);
+                System.out.println("Allowances = " + Allowances);
+            }
+        }
+    }
+}
