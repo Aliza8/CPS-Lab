@@ -86,3 +86,74 @@ class MonthlySalariedEmployee extends Employee{
         }
     }
 }
+
+
+//edit
+
+class HourlySalariedEmployee extends Employee{
+    private int WorkedHours;
+    private int PerHourSalary;
+
+    public int getPerHourSalary() {
+        return PerHourSalary;
+    }
+
+    public int getWorkedHours() {
+        return WorkedHours;
+    }
+
+    public void setPerHourSalary(int a) {
+        PerHourSalary = a;
+    }
+
+    public void setWorkedHours(int a) {
+        WorkedHours = a;
+    }
+
+    HourlySalariedEmployee (){
+        WorkedHours = 0;
+        PerHourSalary = 0;
+    }
+    HourlySalariedEmployee(String a, String b, ArrayList<String> c, int d, int e){
+
+        super(a, b, c);
+        WorkedHours = d;
+        PerHourSalary = e;
+
+    }
+
+    @Override
+    void skillsCheck() {
+        for (int i=0; i<3; i++){
+            if (getSkills().get(i) == "React" && WorkedHours == 4){
+                PerHourSalary += 1000;
+                display();
+                System.out.println("Per hour Salary = " + PerHourSalary);
+                System.out.println("No. of Worked hours = " + WorkedHours);
+            }
+        }
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+
+        ArrayList<String> skill = new ArrayList<String>();
+        skill.add("Python");
+        skill.add("React");
+        skill.add("Java");
+
+        MonthlySalariedEmployee obj1 = new MonthlySalariedEmployee();
+        MonthlySalariedEmployee obj2 = new MonthlySalariedEmployee("Ahmed", "MA", skill, 22000, 1000);
+        obj2.skillsCheck();
+
+        MonthlySalariedEmployee obj3 = new MonthlySalariedEmployee("Hasnain", "MA", skill, 22000, 1000);
+        obj3.skillsCheck();
+
+        System.out.println("\nHOURLY PAID EMPLOYEES: ");
+        HourlySalariedEmployee obj4 = new HourlySalariedEmployee();
+        HourlySalariedEmployee obj5 = new HourlySalariedEmployee("Bilal", "ME", skill, 4, 1050);
+        obj5.skillsCheck();
+    }
+}
